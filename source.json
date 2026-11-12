@@ -7,10 +7,6 @@
         "url":"https://github.com/sjcl"
     },
     "description":"sjcl の VRChat 向けパッケージを配布する VPM リポジトリです。",
-    "infoLink":{
-        "url":"https://github.com/sjcl/vpm.sjcl.me",
-        "text":"View on GitHub"
-    },
     "githubRepos":[
         "sjcl/GripBlink"
     ]
