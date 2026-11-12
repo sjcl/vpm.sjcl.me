@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="refresh" content="0;url=vcc://vpm/addRepo?url=https%3A%2F%2Fvpm.sjcl.me%2Findex.json">
+  <meta name="description" content="sjcl の VPM リポジトリを VCC に追加します。Add the sjcl VPM repository to VRChat Creator Companion.">
+  <title>VCC に追加 / Add to VCC — sjcl</title>
+  <link rel="icon" href="/favicon.ico">
+  <style>
+    :root {
+      color-scheme: light dark;
+      font-family: "Segoe UI", "Yu Gothic UI", Meiryo, sans-serif;
+      line-height: 1.7;
+      --background: #f4f6fa;
+      --surface: #fff;
+      --text: #192334;
+      --muted: #4b596b;
+      --border: #cbd3df;
+      --accent: #2458be;
+    }
+
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 2.5rem 1.25rem; background: var(--background); color: var(--text); }
+    main { max-width: 48rem; margin: 0 auto; }
+    a { color: var(--accent); text-underline-offset: 0.2em; }
+    .brand { font-size: 1.25rem; font-weight: 700; text-decoration: none; }
+    h1 { margin: 1.5rem 0; font-size: clamp(1.5rem, 4vw, 2rem); line-height: 1.4; }
+    h1 span { display: block; margin-top: 0.35rem; font-size: 0.75em; font-weight: 500; color: var(--muted); }
+    p { margin: 0.75rem 0; }
+    .intro { color: var(--muted); }
+    .button {
+      display: inline-block;
+      padding: 0.7rem 1.1rem;
+      border: 1px solid var(--accent);
+      border-radius: 0.5rem;
+      background: var(--accent);
+      color: #fff;
+      font: inherit;
+      font-weight: 600;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .open-button { margin: 0.75rem 0 1.5rem; }
+    .repository, .instructions { padding: 1.25rem; border: 1px solid var(--border); border-radius: 0.75rem; background: var(--surface); }
+    label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
+    input {
+      width: 100%;
+      padding: 0.7rem;
+      border: 1px solid var(--border);
+      border-radius: 0.5rem;
+      background: var(--surface);
+      color: var(--text);
+      font: inherit;
+    }
+    .instructions { margin-top: 1.25rem; }
+    h2 { margin: 0 0 0.75rem; font-size: 1.15rem; }
+    ol { margin: 0; padding-left: 1.5rem; }
+    li + li { margin-top: 0.65rem; }
+    .note { color: var(--muted); font-size: 0.95rem; }
+    footer { margin-top: 1.5rem; }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --background: #111722;
+        --surface: #1a2331;
+        --text: #eef2fa;
+        --muted: #b8c4d7;
+        --border: #46546a;
+        --accent: #a8c7ff;
+      }
+      .open-button { color: #13284b; }
+    }
+
+    @media (max-width: 30rem) {
+      body { padding: 1.5rem 1rem; }
+      .repository, .instructions { padding: 1rem; }
+      .open-button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <a class="brand" href="/">sjcl</a>
+    <h1>VCC にリポジトリを追加<span lang="en">Add repository to VCC</span></h1>
+    <p class="intro">VRChat Creator Companion（VCC）の起動を試みます。ブラウザに確認が表示されたら、VCC を開くことを許可してください。</p>
+    <p class="intro" lang="en">This page tries to open VRChat Creator Companion (VCC). If your browser asks, allow it to open VCC.</p>
+
+    <a class="button open-button" id="open-vcc" href="vcc://vpm/addRepo?url=https%3A%2F%2Fvpm.sjcl.me%2Findex.json">VCC を開く <span lang="en">/ Open VCC</span></a>
+
+    <div class="repository">
+      <label for="repository-url">リポジトリ URL <span lang="en">/ Repository URL</span></label>
+      <input id="repository-url" type="url" value="https://vpm.sjcl.me/index.json" readonly spellcheck="false" dir="ltr">
+      <p class="note">URL を選択してコピーしてください。<br><span lang="en">Select the URL and copy it.</span></p>
+    </div>
+
+    <section class="instructions" aria-labelledby="help-ja">
+      <h2 id="help-ja">自動で開かない場合</h2>
+      <ol>
+        <li>上の「VCC を開く」ボタンを押してください。確認画面が表示されたら、起動を許可してください。</li>
+        <li>それでも開かない場合は VCC を手動で起動し、<strong>Settings → Packages → Add Repository</strong> を開きます。</li>
+        <li>上のリポジトリ URL を貼り付け、<strong>Add</strong> を押します。</li>
+        <li>リポジトリ名が「sjcl」であることと URL を確認し、<strong>I Understand, Add Repository</strong> を押してください。</li>
+      </ol>
+      <p class="note">VCC が未インストールの場合は、<a href="https://vcc.docs.vrchat.com/">公式サイト</a>からインストールして、もう一度お試しください。</p>
+    </section>
+
+    <section class="instructions" lang="en" aria-labelledby="help-en">
+      <h2 id="help-en">If VCC does not open automatically</h2>
+      <ol>
+        <li>Click <strong>Open VCC</strong> above. If your browser asks, allow it to open the application.</li>
+        <li>If it still does not open, launch VCC manually and go to <strong>Settings → Packages → Add Repository</strong>.</li>
+        <li>Paste the repository URL shown above and click <strong>Add</strong>.</li>
+        <li>Check that the repository is named <strong>sjcl</strong> and the URL is correct, then click <strong>I Understand, Add Repository</strong>.</li>
+      </ol>
+      <p class="note">If VCC is not installed, install it from the <a href="https://vcc.docs.vrchat.com/">official website</a>, then try again.</p>
+    </section>
+
+    <footer><a href="/">パッケージ一覧 <span lang="en">/ View packages</span></a></footer>
+  </main>
+</body>
+</html>
