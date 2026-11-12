@@ -1,4 +1,4 @@
-# sjcl VPM Repository
+# sjcl
 
 sjcl の VRChat 向けパッケージを VCC / ALCOM で配布する VPM リポジトリです。
 
