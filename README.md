@@ -1,12 +1,10 @@
-# sjcl
+# vpm.sjcl.me
 
 sjcl の VRChat 向けパッケージを VCC / ALCOM で配布する VPM リポジトリです。
 
 - 配布ページ: <https://vpm.sjcl.me/>
 - リポジトリ URL: <https://vpm.sjcl.me/index.json>
 - VCC / ALCOM に追加: <https://vpm.sjcl.me/add-repo>
-
-GitHub Releases の ZIP から配布一覧を生成し、Cloudflare Pages に公開します。
 
 ## 配布パッケージ
 
