@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="refresh" content="0;url=vcc://vpm/addRepo?url=https%3A%2F%2Fvpm.sjcl.me%2Findex.json">
-  <meta name="description" content="sjcl の VPM リポジトリを VCC に追加します。Add the sjcl VPM repository to VRChat Creator Companion.">
-  <title>VCC に追加 / Add to VCC — sjcl</title>
+  <meta name="description" content="sjcl の VPM リポジトリを VCC / ALCOM に追加します。Add the sjcl VPM repository to VCC / ALCOM.">
+  <title>VCC / ALCOM に追加 / Add to VCC / ALCOM — sjcl</title>
   <link rel="icon" href="/favicon.ico">
   <style>
     :root {
@@ -84,11 +84,11 @@
 <body>
   <main>
     <a class="brand" href="/">sjcl</a>
-    <h1>VCC にリポジトリを追加<span lang="en">Add repository to VCC</span></h1>
-    <p class="intro">VRChat Creator Companion（VCC）の起動を試みます。ブラウザに確認が表示されたら、VCC を開くことを許可してください。</p>
-    <p class="intro" lang="en">This page tries to open VRChat Creator Companion (VCC). If your browser asks, allow it to open VCC.</p>
+    <h1>VCC / ALCOM にリポジトリを追加<span lang="en">Add repository to VCC / ALCOM</span></h1>
+    <p class="intro">VRChat Creator Companion（VCC）または ALCOM の起動を試みます。ブラウザに確認が表示されたら、アプリを開くことを許可してください。</p>
+    <p class="intro" lang="en">This page tries to open VRChat Creator Companion (VCC) or ALCOM. If your browser asks, allow it to open the app.</p>
 
-    <a class="button open-button" id="open-vcc" href="vcc://vpm/addRepo?url=https%3A%2F%2Fvpm.sjcl.me%2Findex.json">VCC を開く <span lang="en">/ Open VCC</span></a>
+    <a class="button open-button" id="open-app" href="vcc://vpm/addRepo?url=https%3A%2F%2Fvpm.sjcl.me%2Findex.json">VCC / ALCOM を開く <span lang="en">/ Open VCC / ALCOM</span></a>
 
     <div class="repository">
       <label for="repository-url">リポジトリ URL <span lang="en">/ Repository URL</span></label>
@@ -99,23 +99,21 @@
     <section class="instructions" aria-labelledby="help-ja">
       <h2 id="help-ja">自動で開かない場合</h2>
       <ol>
-        <li>上の「VCC を開く」ボタンを押してください。確認画面が表示されたら、起動を許可してください。</li>
-        <li>それでも開かない場合は VCC を手動で起動し、<strong>Settings → Packages → Add Repository</strong> を開きます。</li>
-        <li>上のリポジトリ URL を貼り付け、<strong>Add</strong> を押します。</li>
-        <li>リポジトリ名が「sjcl」であることと URL を確認し、<strong>I Understand, Add Repository</strong> を押してください。</li>
+        <li>上の「VCC / ALCOM を開く」ボタンを押してください。確認画面が表示されたら、起動を許可してください。</li>
+        <li>それでも開かない場合はアプリを手動で起動し、VCC では <strong>Settings → Packages → Add Repository</strong>、ALCOM では <strong>Packages → ADD REPOSITORY</strong> を開きます。</li>
+        <li>上のリポジトリ URL を貼り付け、確認画面へ進みます。</li>
+        <li>リポジトリ名が「sjcl」であることと URL を確認し、追加を確定してください。</li>
       </ol>
-      <p class="note">VCC が未インストールの場合は、<a href="https://vcc.docs.vrchat.com/">公式サイト</a>からインストールして、もう一度お試しください。</p>
     </section>
 
     <section class="instructions" lang="en" aria-labelledby="help-en">
-      <h2 id="help-en">If VCC does not open automatically</h2>
+      <h2 id="help-en">If VCC / ALCOM does not open automatically</h2>
       <ol>
-        <li>Click <strong>Open VCC</strong> above. If your browser asks, allow it to open the application.</li>
-        <li>If it still does not open, launch VCC manually and go to <strong>Settings → Packages → Add Repository</strong>.</li>
-        <li>Paste the repository URL shown above and click <strong>Add</strong>.</li>
-        <li>Check that the repository is named <strong>sjcl</strong> and the URL is correct, then click <strong>I Understand, Add Repository</strong>.</li>
+        <li>Click <strong>Open VCC / ALCOM</strong> above. If your browser asks, allow it to open the app.</li>
+        <li>If it still does not open, launch the app manually. In VCC, go to <strong>Settings → Packages → Add Repository</strong>. In ALCOM, go to <strong>Packages → ADD REPOSITORY</strong>.</li>
+        <li>Paste the repository URL shown above and continue to the confirmation screen.</li>
+        <li>Check that the repository is named <strong>sjcl</strong> and the URL is correct, then confirm adding the repository.</li>
       </ol>
-      <p class="note">If VCC is not installed, install it from the <a href="https://vcc.docs.vrchat.com/">official website</a>, then try again.</p>
     </section>
 
     <footer><a href="/">パッケージ一覧 <span lang="en">/ View packages</span></a></footer>
