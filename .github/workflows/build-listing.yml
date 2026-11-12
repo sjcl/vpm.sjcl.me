@@ -1,64 +1,69 @@
-name: Build Repo Listing
+name: Build and Deploy VPM Repository
 
-on: 
+on:
   workflow_dispatch:
   push:
-    branches: main
-    paths: source.json
+    branches: [main]
+    paths:
+      - source.json
+      - Website/**
+      - .github/workflows/build-listing.yml
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
-  pages: write
-  id-token: write
-  
-# Allow one concurrent deployment
+
 concurrency:
-  group: "pages"
+  group: cloudflare-pages
   cancel-in-progress: true
-  
+
 env:
-  listPublishDirectory: Website
+  listPublishDirectory: _site
   pathToCi: ci
+  DOTNET_CLI_TELEMETRY_OPTOUT: '1'
+  NUKE_TELEMETRY_OPTOUT: '1'
 
 jobs:
-  
-  build-listing:
-    name: build-listing
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      
-      - uses: actions/checkout@v4 # check out this repo
-      - uses: actions/checkout@v4 # check out automation repo
+      - name: Check out listing
+        uses: actions/checkout@v4
+
+      - name: Check out listing builder
+        uses: actions/checkout@v4
         with:
           repository: vrchat-community/package-list-action
-          path: ${{env.pathToCi}}
-          clean: false # otherwise the local repo will no longer be checked out
-          
-      - name: Restore Cache
+          ref: cb31c3b5d17d1070d7741c61de2ca1b219224039
+          path: ${{ env.pathToCi }}
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore cache
         uses: actions/cache@v4
         with:
-          path: |
-            ${{env.pathToCi}}/.nuke/temp
-            ~/.nuget/packages
-          key: ${{ runner.os }}-${{ hashFiles('**/global.json', '**/*.csproj') }}
-          
-      - name: Build Package Version Listing
-        run: ${{env.pathToCi}}/build.cmd BuildMultiPackageListing --root ${{env.pathToCi}} --list-publish-directory $GITHUB_WORKSPACE/${{env.listPublishDirectory}}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
- 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-        
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('ci/**/*.csproj') }}
+
+      # Local mode rebuilds every release. The builder's server mode skips
+      # existing URLs without copying their manifests into the new index.
+      - name: Build package listing and website
+        run: >-
+          dotnet run
+          --project "${{ env.pathToCi }}/PackageBuilder/PackageBuilder.csproj"
+          --framework net8.0
+          -- BuildRepoListing
+          --root "$GITHUB_WORKSPACE/${{ env.pathToCi }}"
+          --host terminal
+          --package-listing-source-folder "$GITHUB_WORKSPACE"
+          --list-publish-directory "$GITHUB_WORKSPACE/${{ env.listPublishDirectory }}"
+
+      - name: Deploy to Cloudflare Pages
+        if: github.ref == 'refs/heads/main'
+        uses: cloudflare/wrangler-action@v4
         with:
-          path: ${{env.listPublishDirectory}}
-          
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy ${{ env.listPublishDirectory }} --project-name=vpm-sjcl-me --branch=main
