@@ -27,10 +27,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out listing
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Check out listing builder
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: vrchat-community/package-list-action
           ref: cb31c3b5d17d1070d7741c61de2ca1b219224039
